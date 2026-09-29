@@ -1,69 +1,37 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
+
+const opportunities = [
+  { eyebrow: "01 / OPPORTUNITY", title: "Scholarships for curious minds.", text: "Find support, mentors, and the confidence to take your next big step.", image: "circuit" },
+  { eyebrow: "02 / OPPORTUNITY", title: "Workshops that move ideas forward.", text: "Learn by doing with people who are just as excited to build the future.", image: "workshop" },
+  { eyebrow: "03 / OPPORTUNITY", title: "Mentorship for your next chapter.", text: "Get practical guidance from a community that wants to see you thrive.", image: "coding" },
+];
+
+const classes = [
+  { number: "01", name: "Science Lab", detail: "Experiment / Discover", image: "science" },
+  { number: "02", name: "Creative Coding", detail: "Make / Play / Build", image: "coding" },
+  { number: "03", name: "STEM Workshop", detail: "Design / Test / Share", image: "workshop" },
+];
 
 export default function Home() {
+  const [opportunityIndex, setOpportunityIndex] = useState(0);
+  const opportunity = opportunities[opportunityIndex];
+  const shiftOpportunity = (step: number) => setOpportunityIndex((current) => (current + step + opportunities.length) % opportunities.length);
+  const opportunityFile = opportunity.image === "circuit" ? "stem-circuit" : opportunity.image === "workshop" ? "stem-workshop" : "coding-class";
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main>
+      <header className="site-header"><a className="brand" href="#top" aria-label="Youth in STEM home"><Image src="/YIS Logo Transparent.png" alt="Youth in STEM Indonesia" width={92} height={62} priority /><span>YOUTH IN STEM <i>INDONESIA</i></span></a><nav aria-label="Main navigation"><a href="#classes">Sign-up</a><a href="#contact">Login</a></nav></header>
+      <div id="top">
+        <section className="hero-section"><div className="hero-copy"><h1>Make your<br /><span>next move</span><br />count.</h1><p className="hero-lede">A place for young people to explore science, technology, engineering, and mathematics through real opportunities.</p><a className="primary-link" href="#opportunities">Explore opportunities <span>↗</span></a></div><div className="hero-visual"><div className="hero-image"><Image src="/visuals/stem-workshop.jpg" alt="Students collaborating in a STEM workshop" fill priority sizes="(max-width: 700px) 90vw, 48vw" /></div></div></section>
+        <section id="opportunities" className="opportunity-section"><div className="section-heading"><p className="kicker">01 / START HERE</p><h2>There is more<br /><em>out there.</em></h2><p>Whether you are looking for a first spark or your next challenge, find a path that feels like yours.</p></div><div className="opportunity-feature"><div className={`opportunity-image ${opportunity.image}`}><Image src={`/visuals/${opportunityFile}.jpg`} alt={opportunity.title} fill sizes="(max-width: 700px) 92vw, 55vw" /><span className="image-index">0{opportunityIndex + 1}</span></div><div className="opportunity-info"><p className="kicker">{opportunity.eyebrow}</p><h3>{opportunity.title}</h3><p>{opportunity.text}</p><a href="#contact">See what is possible <span>↗</span></a><div className="feature-controls"><button type="button" aria-label="Previous opportunity" onClick={() => shiftOpportunity(-1)}>←</button><div>{opportunities.map((item, index) => <button key={item.eyebrow} type="button" aria-label={`Show ${item.title}`} className={index === opportunityIndex ? "selected" : ""} onClick={() => setOpportunityIndex(index)} />)}</div><button type="button" aria-label="Next opportunity" onClick={() => shiftOpportunity(1)}>→</button></div></div></div></section>
+        <section className="competition-section"><div className="section-heading light"><p className="kicker">02 / TAKE THE CHALLENGE</p><h2>Ready to put<br /><em>ideas in motion?</em></h2></div><div className="competition-grid"><article><div className="competition-image"><Image src="/visuals/stem-circuit.jpg" alt="Circuit board for offline competition" fill sizes="(max-width: 700px) 90vw, 40vw" /></div><div><span>01</span><h3>Offline competitions</h3><p>Show up, work together, and make an impact in the room.</p><a href="#contact">View challenges ↗</a></div></article><article><div className="competition-image"><Image src="/visuals/coding-class.jpg" alt="Coding workspace for online competition" fill sizes="(max-width: 700px) 90vw, 40vw" /></div><div><span>02</span><h3>Online competitions</h3><p>Bring your boldest ideas to a wider digital stage.</p><a href="#contact">View challenges ↗</a></div></article></div></section>
+        <section className="community-section"><div className="community-image"><Image src="/visuals/stem-workshop.jpg" alt="Students connecting at a community event" fill sizes="(max-width: 700px) 90vw, 45vw" /></div><div className="community-copy"><p className="kicker">03 / FIND YOUR PEOPLE</p><h2>Big ideas are better <em>together.</em></h2><p>Join a growing community of young people who are learning out loud, sharing generously, and making room for each other.</p><a className="primary-link dark-link" href="#contact">Join the community <span>↗</span></a></div></section>
+        <section id="classes" className="classes-section"><div className="classes-heading"><div><p className="kicker">04 / KEEP GROWING</p><h2>Learn something<br /><em>worth making.</em></h2></div><p>Hands-on classes for the skills, questions, and ideas you want to take further.</p></div><div className="class-grid">{classes.map((item) => { const file = item.image === "science" ? "science-lab" : item.image === "coding" ? "coding-class" : "stem-workshop"; return <article className="class-card" key={item.name}><Image src={`/visuals/${file}.jpg`} alt={item.name} fill sizes="(max-width: 700px) 90vw, 30vw" /><div><span>{item.number}</span><small>{item.detail}</small></div><h3>{item.name}</h3><b>↗</b></article>; })}</div></section>
+      </div>
+      <footer id="contact" className="site-footer"><div className="footer-brand"><Image src="/YIS Logo Transparent.png" alt="Youth in STEM" width={92} height={62} /><span>YOUTH IN STEM<br /><small>INDONESIA</small></span></div><div className="contact-info"><span>Instagram ↗</span><span>Email ↗</span><span>Phone ↗</span></div><p className="copyright">© 2026 YIS INDONESIA</p></footer>
+    </main>
   );
 }
