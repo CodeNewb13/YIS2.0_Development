@@ -6,3 +6,6 @@ out/
 .env.local
 *.tsbuildinfo
 coverage/
+.agents/
+.claude/
+skills-lock.json
