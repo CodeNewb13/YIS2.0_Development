@@ -1,0 +1,13 @@
+{
+  "background.auxiliarybar": {
+    "images": [
+      "C:\\Users\\LOQ\\Downloads\\9366ca00f074b5fa4ca351b02dd8e164.jpg"
+    ],
+    "opacity": 0.1,
+    "size": "cover",
+    "position": "center",
+    "styles": [],
+    "interval": 0,
+    "random": false
+  }
+}

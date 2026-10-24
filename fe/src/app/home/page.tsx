@@ -66,10 +66,38 @@ const OPPORTUNITIES_DATA: OpportunityItem[] = [
 ];
 
 const UNIVERSITY_PARTNERS = [
-  { name: "Institut Teknologi Bandung", code: "ITB", event: "Future Engineers Day", date: "14 Nov 2026", bg: "#BCD5C6", color: "#1C2533" },
-  { name: "Universitas Indonesia", code: "UI", event: "Science & AI Expo", date: "02 Des 2026", bg: "#CFE4F3", color: "#1C2533" },
-  { name: "Universitas Gadjah Mada", code: "UGM", event: "Inovasi Terapan 2026", date: "18 Des 2026", bg: "#EDBD62", color: "#1C2533" },
-  { name: "Nanyang Tech University", code: "NTU", event: "ASEAN Youth STEM", date: "22 Jan 2027", bg: "#E16E68", color: "#FFF9EF" },
+  {
+    name: "Institut Teknologi Bandung",
+    code: "ITB",
+    event: "Future Engineers Day",
+    date: "14 Nov 2026",
+    bg: "#BCD5C6",
+    color: "#1C2533",
+  },
+  {
+    name: "Universitas Indonesia",
+    code: "UI",
+    event: "Science & AI Expo",
+    date: "02 Des 2026",
+    bg: "#CFE4F3",
+    color: "#1C2533",
+  },
+  {
+    name: "Universitas Gadjah Mada",
+    code: "UGM",
+    event: "Inovasi Terapan 2026",
+    date: "18 Des 2026",
+    bg: "#EDBD62",
+    color: "#1C2533",
+  },
+  {
+    name: "Nanyang Tech University",
+    code: "NTU",
+    event: "ASEAN Youth STEM",
+    date: "22 Jan 2027",
+    bg: "#E16E68",
+    color: "#FFF9EF",
+  },
 ];
 
 export default function IllustratedHomePage() {
@@ -92,8 +120,13 @@ export default function IllustratedHomePage() {
     }
   }, []);
 
-  const nextSlide = () => setActiveSlide((prev) => (prev + 1) % OPPORTUNITIES_DATA.length);
-  const prevSlide = () => setActiveSlide((prev) => (prev - 1 + OPPORTUNITIES_DATA.length) % OPPORTUNITIES_DATA.length);
+  const nextSlide = () =>
+    setActiveSlide((prev) => (prev + 1) % OPPORTUNITIES_DATA.length);
+  const prevSlide = () =>
+    setActiveSlide(
+      (prev) =>
+        (prev - 1 + OPPORTUNITIES_DATA.length) % OPPORTUNITIES_DATA.length,
+    );
 
   const currentOpportunity = OPPORTUNITIES_DATA[activeSlide];
 
@@ -104,7 +137,13 @@ export default function IllustratedHomePage() {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
             <div className="relative w-12 h-9 shrink-0">
-              <Image src="/YIS Logo Transparent.png" alt="YIS Logo" fill className="object-contain" priority />
+              <Image
+                src="/YIS_Logo_Dark_Version.png"
+                alt="YIS Logo"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
             <div>
               <span className="font-black text-sm md:text-base tracking-tight text-[#1C2533] leading-none block">
@@ -119,8 +158,12 @@ export default function IllustratedHomePage() {
           {/* Right: Navigation & Avatar */}
           <div className="flex items-center gap-5">
             <nav className="hidden sm:flex items-center gap-5 text-xs font-black text-[#1C2533] uppercase">
-              <Link href="/event-list-2" className="hover:text-[#4C84AB]">Bento Events</Link>
-              <Link href="/page" className="hover:text-[#4C84AB]">Dashboard View</Link>
+              <Link href="/event-list-2" className="hover:text-[#4C84AB]">
+                Bento Events
+              </Link>
+              <Link href="/page" className="hover:text-[#4C84AB]">
+                Dashboard View
+              </Link>
             </nav>
 
             <div className="relative">
@@ -128,8 +171,7 @@ export default function IllustratedHomePage() {
                 type="button"
                 onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
                 className="w-10 h-10 rounded-full bg-[#4C84AB] border-2 border-[#1C2533] text-[#FFF9EF] flex items-center justify-center font-black text-sm shadow-[2px_2px_0px_0px_#1C2533]"
-                aria-label="User profile"
-              >
+                aria-label="User profile">
                 {user.name.charAt(0)}
               </button>
 
@@ -139,21 +181,26 @@ export default function IllustratedHomePage() {
                     {user.name}
                   </div>
                   <div className="py-1 text-xs font-bold">
-                    <Link href="/complete-profile" className="block px-3 py-1.5 hover:bg-[#1C2533]/5 rounded">
+                    <Link
+                      href="/complete-profile"
+                      className="block px-3 py-1.5 hover:bg-[#1C2533]/5 rounded">
                       Edit Profile
                     </Link>
-                    <Link href="/page" className="block px-3 py-1.5 hover:bg-[#1C2533]/5 rounded">
+                    <Link
+                      href="/page"
+                      className="block px-3 py-1.5 hover:bg-[#1C2533]/5 rounded">
                       Dashboard View
                     </Link>
-                    <Link href="/event-list-2" className="block px-3 py-1.5 hover:bg-[#1C2533]/5 rounded">
+                    <Link
+                      href="/event-list-2"
+                      className="block px-3 py-1.5 hover:bg-[#1C2533]/5 rounded">
                       Event Bento
                     </Link>
                   </div>
                   <div className="pt-1 border-t border-[#1C2533]/20">
                     <Link
                       href="/login"
-                      className="flex items-center gap-2 px-3 py-1.5 text-xs font-bold text-[#D44D46] hover:bg-[#D44D46]/10 rounded"
-                    >
+                      className="flex items-center gap-2 px-3 py-1.5 text-xs font-bold text-[#D44D46] hover:bg-[#D44D46]/10 rounded">
                       <LogOut className="w-3.5 h-3.5" />
                       <span>Log Out</span>
                     </Link>
@@ -180,8 +227,7 @@ export default function IllustratedHomePage() {
 
           <Link
             href="/event-list-2"
-            className="px-5 py-2.5 rounded-full bg-[#EDBD62] hover:bg-[#f1c779] text-[#1C2533] font-black text-xs uppercase tracking-wider w-fit shadow-[3px_3px_0px_0px_#000]"
-          >
+            className="px-5 py-2.5 rounded-full bg-[#EDBD62] hover:bg-[#f1c779] text-[#1C2533] font-black text-xs uppercase tracking-wider w-fit shadow-[3px_3px_0px_0px_#000]">
             Buka Bento Events →
           </Link>
         </div>
@@ -200,16 +246,14 @@ export default function IllustratedHomePage() {
                   type="button"
                   onClick={prevSlide}
                   className="w-9 h-9 rounded-full border-2 border-[#1C2533] bg-[#FFF9EF] hover:bg-[#1C2533] hover:text-[#FFF9EF] flex items-center justify-center transition-all shadow-[2px_2px_0px_0px_#1C2533]"
-                  aria-label="Previous"
-                >
+                  aria-label="Previous">
                   <ChevronLeft className="w-5 h-5" />
                 </button>
                 <button
                   type="button"
                   onClick={nextSlide}
                   className="w-9 h-9 rounded-full border-2 border-[#1C2533] bg-[#FFF9EF] hover:bg-[#1C2533] hover:text-[#FFF9EF] flex items-center justify-center transition-all shadow-[2px_2px_0px_0px_#1C2533]"
-                  aria-label="Next"
-                >
+                  aria-label="Next">
                   <ChevronRight className="w-5 h-5" />
                 </button>
               </div>
@@ -250,8 +294,7 @@ export default function IllustratedHomePage() {
 
                   <Link
                     href="/event-details-2"
-                    className="px-4 py-2 rounded-full bg-[#1C2533] text-[#FFF9EF] hover:bg-[#2c3b52] text-xs font-black uppercase tracking-wider flex items-center gap-1 shadow-[2px_2px_0px_0px_#EDBD62]"
-                  >
+                    className="px-4 py-2 rounded-full bg-[#1C2533] text-[#FFF9EF] hover:bg-[#2c3b52] text-xs font-black uppercase tracking-wider flex items-center gap-1 shadow-[2px_2px_0px_0px_#EDBD62]">
                     <span>Detail</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
@@ -267,7 +310,9 @@ export default function IllustratedHomePage() {
                   type="button"
                   onClick={() => setActiveSlide(idx)}
                   className={`transition-all rounded-full ${
-                    idx === activeSlide ? "w-8 h-2.5 bg-[#1C2533]" : "w-2.5 h-2.5 bg-[#1C2533]/30 hover:bg-[#1C2533]/60"
+                    idx === activeSlide
+                      ? "w-8 h-2.5 bg-[#1C2533]"
+                      : "w-2.5 h-2.5 bg-[#1C2533]/30 hover:bg-[#1C2533]/60"
                   }`}
                   aria-label={`Slide ${idx + 1}`}
                 />
@@ -284,20 +329,41 @@ export default function IllustratedHomePage() {
 
               <div className="space-y-3">
                 {[
-                  { num: "1", title: "Microcontroller & IoT Workshop", status: "Selesai", bg: "#DBF9E7", color: "#597865" },
-                  { num: "2", title: "National STEM Circuit Hackathon", status: "Lolos Tahap 2", bg: "#FFF9DA", color: "#8C6A1E" },
-                  { num: "3", title: "Python Algorithmic Problem Solving", status: "Sedang Berjalan", bg: "#CFE4F3", color: "#4C84AB" },
+                  {
+                    num: "1",
+                    title: "Microcontroller & IoT Workshop",
+                    status: "Selesai",
+                    bg: "#DBF9E7",
+                    color: "#597865",
+                  },
+                  {
+                    num: "2",
+                    title: "National STEM Circuit Hackathon",
+                    status: "Lolos Tahap 2",
+                    bg: "#FFF9DA",
+                    color: "#8C6A1E",
+                  },
+                  {
+                    num: "3",
+                    title: "Python Algorithmic Problem Solving",
+                    status: "Sedang Berjalan",
+                    bg: "#CFE4F3",
+                    color: "#4C84AB",
+                  },
                 ].map((act) => (
-                  <div key={act.num} className="p-3.5 rounded-xl border-2 border-[#1C2533] bg-[#FFF9EF] flex items-center gap-3">
+                  <div
+                    key={act.num}
+                    className="p-3.5 rounded-xl border-2 border-[#1C2533] bg-[#FFF9EF] flex items-center gap-3">
                     <span className="w-7 h-7 rounded bg-[#1C2533] text-[#FFF9EF] font-black text-xs flex items-center justify-center shrink-0">
                       {act.num}
                     </span>
                     <div className="flex-1 min-w-0">
-                      <p className="text-xs font-black text-[#1C2533] truncate">{act.title}</p>
+                      <p className="text-xs font-black text-[#1C2533] truncate">
+                        {act.title}
+                      </p>
                       <span
                         className="inline-block text-[9px] font-black px-2 py-0.5 rounded border border-[#1C2533]/20 mt-1"
-                        style={{ backgroundColor: act.bg, color: act.color }}
-                      >
+                        style={{ backgroundColor: act.bg, color: act.color }}>
                         {act.status}
                       </span>
                     </div>
@@ -307,7 +373,9 @@ export default function IllustratedHomePage() {
             </div>
 
             <div className="mt-5 pt-3 border-t border-[#1C2533]/20 text-center">
-              <Link href="/page" className="text-xs font-black text-[#4C84AB] hover:underline">
+              <Link
+                href="/page"
+                className="text-xs font-black text-[#4C84AB] hover:underline">
                 Buka Log Aktivitas &amp; Pengunjung →
               </Link>
             </div>
@@ -320,15 +388,16 @@ export default function IllustratedHomePage() {
             <h2 className="text-2xl sm:text-3xl font-black text-[#FFF9EF] tracking-tight uppercase">
               BROWSE MORE!
             </h2>
-            <p className="text-xs text-[#BCD5C6] font-semibold mt-1">Eksplorasi ragam rumpun kegiatan STEM</p>
+            <p className="text-xs text-[#BCD5C6] font-semibold mt-1">
+              Eksplorasi ragam rumpun kegiatan STEM
+            </p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {/* 1. Competition (Sage #BCD5C6) */}
             <Link
               href="/event-list-2"
-              className="rounded-2xl border-2 border-[#1C2533] bg-[#BCD5C6] text-[#1C2533] p-6 flex flex-col justify-between shadow-[5px_5px_0px_0px_#000] hover:translate-x-0.5 hover:translate-y-0.5 transition-all group"
-            >
+              className="rounded-2xl border-2 border-[#1C2533] bg-[#BCD5C6] text-[#1C2533] p-6 flex flex-col justify-between shadow-[5px_5px_0px_0px_#000] hover:translate-x-0.5 hover:translate-y-0.5 transition-all group">
               <div>
                 <div className="w-12 h-12 rounded-xl bg-[#597865] text-[#FFF9EF] flex items-center justify-center mb-4 border-2 border-[#1C2533]">
                   <Trophy className="w-6 h-6" />
@@ -342,15 +411,16 @@ export default function IllustratedHomePage() {
               </div>
               <div className="mt-6 pt-3 border-t border-[#1C2533]/20 flex items-center justify-between text-xs font-black">
                 <span>14 Kompetisi</span>
-                <span className="group-hover:translate-x-1 transition-transform">Buka →</span>
+                <span className="group-hover:translate-x-1 transition-transform">
+                  Buka →
+                </span>
               </div>
             </Link>
 
             {/* 2. Opportunities (Sky Blue #CFE4F3) */}
             <Link
               href="/event-list-2"
-              className="rounded-2xl border-2 border-[#1C2533] bg-[#CFE4F3] text-[#1C2533] p-6 flex flex-col justify-between shadow-[5px_5px_0px_0px_#000] hover:translate-x-0.5 hover:translate-y-0.5 transition-all group"
-            >
+              className="rounded-2xl border-2 border-[#1C2533] bg-[#CFE4F3] text-[#1C2533] p-6 flex flex-col justify-between shadow-[5px_5px_0px_0px_#000] hover:translate-x-0.5 hover:translate-y-0.5 transition-all group">
               <div>
                 <div className="w-12 h-12 rounded-xl bg-[#4C84AB] text-[#FFF9EF] flex items-center justify-center mb-4 border-2 border-[#1C2533]">
                   <Briefcase className="w-6 h-6" />
@@ -364,15 +434,16 @@ export default function IllustratedHomePage() {
               </div>
               <div className="mt-6 pt-3 border-t border-[#1C2533]/20 flex items-center justify-between text-xs font-black">
                 <span>28 Program</span>
-                <span className="group-hover:translate-x-1 transition-transform">Buka →</span>
+                <span className="group-hover:translate-x-1 transition-transform">
+                  Buka →
+                </span>
               </div>
             </Link>
 
             {/* 3. Events (Warm Yellow #EDBD62) */}
             <Link
               href="/event-list-2"
-              className="rounded-2xl border-2 border-[#1C2533] bg-[#EDBD62] text-[#1C2533] p-6 flex flex-col justify-between shadow-[5px_5px_0px_0px_#000] hover:translate-x-0.5 hover:translate-y-0.5 transition-all group"
-            >
+              className="rounded-2xl border-2 border-[#1C2533] bg-[#EDBD62] text-[#1C2533] p-6 flex flex-col justify-between shadow-[5px_5px_0px_0px_#000] hover:translate-x-0.5 hover:translate-y-0.5 transition-all group">
               <div>
                 <div className="w-12 h-12 rounded-xl bg-[#1C2533] text-[#EDBD62] flex items-center justify-center mb-4 border-2 border-[#1C2533]">
                   <Calendar className="w-6 h-6" />
@@ -386,15 +457,16 @@ export default function IllustratedHomePage() {
               </div>
               <div className="mt-6 pt-3 border-t border-[#1C2533]/20 flex items-center justify-between text-xs font-black">
                 <span>9 Terjadwal</span>
-                <span className="group-hover:translate-x-1 transition-transform">Buka →</span>
+                <span className="group-hover:translate-x-1 transition-transform">
+                  Buka →
+                </span>
               </div>
             </Link>
 
             {/* 4. Tutoring (Coral Red #E16E68) */}
             <Link
               href="/event-list-2"
-              className="rounded-2xl border-2 border-[#1C2533] bg-[#E16E68] text-[#FFF9EF] p-6 flex flex-col justify-between shadow-[5px_5px_0px_0px_#000] hover:translate-x-0.5 hover:translate-y-0.5 transition-all group"
-            >
+              className="rounded-2xl border-2 border-[#1C2533] bg-[#E16E68] text-[#FFF9EF] p-6 flex flex-col justify-between shadow-[5px_5px_0px_0px_#000] hover:translate-x-0.5 hover:translate-y-0.5 transition-all group">
               <div>
                 <div className="w-12 h-12 rounded-xl bg-[#1C2533] text-[#FFF9EF] flex items-center justify-center mb-4 border-2 border-[#1C2533]">
                   <GraduationCap className="w-6 h-6" />
@@ -403,12 +475,15 @@ export default function IllustratedHomePage() {
                   Tutoring
                 </h3>
                 <p className="text-xs text-[#FFF9EF]/90 font-bold mt-2 leading-relaxed">
-                  Bimbingan 1-on-1 bersama alumni olimpiade sains dan mentor riset.
+                  Bimbingan 1-on-1 bersama alumni olimpiade sains dan mentor
+                  riset.
                 </p>
               </div>
               <div className="mt-6 pt-3 border-t border-[#FFF9EF]/30 flex items-center justify-between text-xs font-black">
                 <span>35 Mentor</span>
-                <span className="group-hover:translate-x-1 transition-transform">Buka →</span>
+                <span className="group-hover:translate-x-1 transition-transform">
+                  Buka →
+                </span>
               </div>
             </Link>
           </div>
@@ -431,8 +506,7 @@ export default function IllustratedHomePage() {
                 key={uni.code}
                 href="/event-details-2"
                 className="p-5 rounded-xl border-2 border-[#1C2533] shadow-[4px_4px_0px_0px_#000] hover:translate-x-0.5 hover:translate-y-0.5 transition-all flex flex-col justify-between"
-                style={{ backgroundColor: uni.bg, color: uni.color }}
-              >
+                style={{ backgroundColor: uni.bg, color: uni.color }}>
                 <div>
                   <span className="w-8 h-8 rounded-lg bg-[#1C2533] text-[#FFF9EF] font-black text-xs flex items-center justify-center mb-3">
                     {uni.code}
