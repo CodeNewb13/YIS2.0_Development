@@ -63,8 +63,8 @@ export default function Home() {
         : "coding-class";
 
   return (
-    <main>
-      <header className="bg-[#1C2533] text-[#FFF9EF] flex items-center justify-between px-4 md:px-8 py-3.5">
+    <main className="pt-0">
+      <header className="fixed left-0 right-0 top-0 z-50 bg-[#1C2533] text-[#FFF9EF] flex items-center justify-between px-4 md:px-8 py-3.5 shadow-[0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-sm">
         <Link className="brand" href="/" aria-label="Youth in STEM home">
           <Image
             src="/YIS_Logo_Dark_Version.jpeg"
