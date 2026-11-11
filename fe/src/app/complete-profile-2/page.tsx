@@ -93,7 +93,7 @@ export default function CompleteProfileVariant2Page() {
 
   return (
     <div className="min-h-screen bg-[#1C2533] text-[#FFF9EF] flex flex-col justify-between antialiased">
-      {/* Top Header strictly matching wireframe: 'YIS WEBSITE NAME' */}
+      {/* Top Header */}
       <header className="px-6 py-5">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
@@ -106,9 +106,14 @@ export default function CompleteProfileVariant2Page() {
                 priority
               />
             </div>
-            <span className="font-black text-base sm:text-lg tracking-tight text-[#FFF9EF] uppercase">
-              YIS WEBSITE NAME
-            </span>
+            <div>
+              <span className="font-black text-sm md:text-base tracking-tight text-[#FFF9EF] uppercase leading-none block">
+                Youth in STEM
+              </span>
+              <span className="text-[9px] font-bold tracking-[0.18em] text-[#BCD5C6] uppercase block mt-0.5">
+                Indonesia
+              </span>
+            </div>
           </Link>
         </div>
       </header>

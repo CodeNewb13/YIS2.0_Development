@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { UserDashboardHeader } from "@/components/UserDashboardHeader";
 import {
   Trophy,
   Briefcase,
@@ -132,85 +133,8 @@ export default function IllustratedHomePage() {
 
   return (
     <div className="min-h-screen bg-[#1C2533] text-[#FFF9EF] flex flex-col antialiased">
-      {/* Header strictly matching wireframe: YIS WEBSITE NAME + User Avatar */}
-      <header className="bg-[#FFF9EF] border-b-2 border-[#1C2533] px-6 py-4 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="relative w-12 h-9 shrink-0">
-              <Image
-                src="/YIS_Logo_Dark_Version.png"
-                alt="YIS Logo"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-            <div>
-              <span className="font-black text-sm md:text-base tracking-tight text-[#1C2533] leading-none block">
-                YIS WEBSITE NAME
-              </span>
-              <span className="text-[9px] font-bold tracking-[0.18em] text-[#597865] uppercase block mt-0.5">
-                Youth in STEM Indonesia
-              </span>
-            </div>
-          </Link>
-
-          {/* Right: Navigation & Avatar */}
-          <div className="flex items-center gap-5">
-            <nav className="hidden sm:flex items-center gap-5 text-xs font-black text-[#1C2533] uppercase">
-              <Link href="/event-list-2" className="hover:text-[#4C84AB]">
-                Bento Events
-              </Link>
-              <Link href="/page" className="hover:text-[#4C84AB]">
-                Dashboard View
-              </Link>
-            </nav>
-
-            <div className="relative">
-              <button
-                type="button"
-                onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
-                className="w-10 h-10 rounded-full bg-[#4C84AB] border-2 border-[#1C2533] text-[#FFF9EF] flex items-center justify-center font-black text-sm shadow-[2px_2px_0px_0px_#1C2533]"
-                aria-label="User profile">
-                {user.name.charAt(0)}
-              </button>
-
-              {profileDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 rounded-xl bg-[#FFF9EF] border-2 border-[#1C2533] shadow-[4px_4px_0px_0px_#000] p-2 z-50 text-[#1C2533]">
-                  <div className="px-3 py-1.5 border-b border-[#1C2533]/20 font-bold text-xs">
-                    {user.name}
-                  </div>
-                  <div className="py-1 text-xs font-bold">
-                    <Link
-                      href="/complete-profile"
-                      className="block px-3 py-1.5 hover:bg-[#1C2533]/5 rounded">
-                      Edit Profile
-                    </Link>
-                    <Link
-                      href="/page"
-                      className="block px-3 py-1.5 hover:bg-[#1C2533]/5 rounded">
-                      Dashboard View
-                    </Link>
-                    <Link
-                      href="/event-list-2"
-                      className="block px-3 py-1.5 hover:bg-[#1C2533]/5 rounded">
-                      Event Bento
-                    </Link>
-                  </div>
-                  <div className="pt-1 border-t border-[#1C2533]/20">
-                    <Link
-                      href="/login"
-                      className="flex items-center gap-2 px-3 py-1.5 text-xs font-bold text-[#D44D46] hover:bg-[#D44D46]/10 rounded">
-                      <LogOut className="w-3.5 h-3.5" />
-                      <span>Log Out</span>
-                    </Link>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </header>
+      {/* Consistent User Dashboard Header */}
+      <UserDashboardHeader currentPath="/home" userName={user.name} />
 
       {/* Main Container */}
       <main className="max-w-7xl mx-auto w-full px-4 sm:px-8 py-8 md:py-10 space-y-12 flex-1">

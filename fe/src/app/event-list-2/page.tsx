@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, MapPin, Calendar } from "lucide-react";
+import { UserDashboardHeader } from "@/components/UserDashboardHeader";
 
 const EVENTS = [
   {
@@ -68,29 +69,8 @@ const EVENTS = [
 export default function EventListBentoPage() {
   return (
     <div className="min-h-screen bg-[#1C2533] text-[#FFF9EF] flex flex-col antialiased">
-      {/* Header */}
-      <header className="bg-[#FFF9EF] border-b-2 border-[#1C2533] px-6 py-4 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="relative w-12 h-9">
-              <Image src="/YIS Logo Transparent.png" alt="YIS Logo" fill className="object-contain" priority />
-            </div>
-            <div>
-              <span className="font-black text-sm md:text-base tracking-tight text-[#1C2533] uppercase leading-none block">
-                YIS WEBSITE NAME
-              </span>
-              <span className="text-[9px] font-bold tracking-[0.18em] text-[#597865] uppercase block mt-0.5">
-                Youth in STEM Indonesia
-              </span>
-            </div>
-          </Link>
-
-          <nav className="flex items-center gap-5 text-xs font-black text-[#1C2533] uppercase">
-            <Link href="/home" className="hover:text-[#4C84AB]">Home</Link>
-            <Link href="/page" className="hover:text-[#4C84AB]">Dashboard</Link>
-          </nav>
-        </div>
-      </header>
+      {/* Consistent User Dashboard Header */}
+      <UserDashboardHeader currentPath="/event-list-2" />
 
       {/* Main Content Area strictly matching Wireframe 3 Bento Grid */}
       <main className="max-w-6xl mx-auto w-full px-4 sm:px-8 py-8 md:py-12 flex-1 space-y-8">

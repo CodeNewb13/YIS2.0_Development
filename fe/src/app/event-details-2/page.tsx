@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { ArrowLeft, ArrowRight, Share2, Check } from "lucide-react";
+import { UserDashboardHeader } from "@/components/UserDashboardHeader";
 
 export default function EventDetailsPage() {
   const [registered, setRegistered] = useState(false);
@@ -19,32 +20,8 @@ export default function EventDetailsPage() {
 
   return (
     <div className="min-h-screen bg-[#1C2533] text-[#FFF9EF] flex flex-col antialiased">
-      {/* Header */}
-      <header className="bg-[#FFF9EF] border-b-2 border-[#1C2533] px-6 py-4 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="relative w-12 h-9">
-              <Image src="/YIS Logo Transparent.png" alt="YIS Logo" fill className="object-contain" priority />
-            </div>
-            <div>
-              <span className="font-black text-sm md:text-base tracking-tight text-[#1C2533] uppercase leading-none block">
-                YIS WEBSITE NAME
-              </span>
-              <span className="text-[9px] font-bold tracking-[0.18em] text-[#597865] uppercase block mt-0.5">
-                Youth in STEM Indonesia
-              </span>
-            </div>
-          </Link>
-
-          <Link
-            href="/event-list-2"
-            className="text-xs font-black text-[#1C2533] hover:underline flex items-center gap-1.5"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Kembali ke Events</span>
-          </Link>
-        </div>
-      </header>
+      {/* Consistent User Dashboard Header */}
+      <UserDashboardHeader currentPath="/event-details-2" />
 
       {/* Main Container strictly following Wireframe 4 (/event-details-2) */}
       <main className="max-w-6xl mx-auto w-full px-4 sm:px-8 py-8 md:py-10 flex-1 space-y-6">

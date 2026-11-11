@@ -47,9 +47,14 @@ export default function LoginPage() {
                 priority
               />
             </div>
-            <span className="font-black text-base tracking-tight text-[#FFF9EF] uppercase">
-              YIS WEBSITE NAME
-            </span>
+            <div>
+              <span className="font-black text-sm md:text-base tracking-tight text-[#FFF9EF] uppercase leading-none block">
+                Youth in STEM
+              </span>
+              <span className="text-[9px] font-bold tracking-[0.18em] text-[#BCD5C6] uppercase block mt-0.5">
+                Indonesia
+              </span>
+            </div>
           </Link>
         </div>
       </header>
