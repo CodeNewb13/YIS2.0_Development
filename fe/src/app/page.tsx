@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { motion, useReducedMotion, MotionConfig } from "motion/react";
 
 const opportunities = [
   {
@@ -47,9 +48,12 @@ const classes = [
   },
 ];
 
+const MotionLink = motion.create(Link);
+
 export default function Home() {
   const [opportunityIndex, setOpportunityIndex] = useState(0);
   const opportunity = opportunities[opportunityIndex];
+  const reduceMotion = useReducedMotion();
   const shiftOpportunity = (step: number) =>
     setOpportunityIndex(
       (current) =>
@@ -101,19 +105,85 @@ export default function Home() {
               A place for young people to explore science, technology,
               engineering, and mathematics through real opportunities.
             </p>
-            <div className="flex items-center gap-3">
-              <Link className="primary-link" href="/sign-up">
-                Get Started <span>↗</span>
-              </Link>
-              <Link
-                className="primary-link !bg-transparent !text-[#FFF9EF] border border-[#FFF9EF]/40 hover:!bg-[#FFF9EF]/10"
-                href="/home">
-                Enter Portal <span>→</span>
-              </Link>
-            </div>
+            <MotionConfig reducedMotion="user">
+              <div className="flex items-center gap-3">
+                <MotionLink
+                  className="primary-link"
+                  href="/sign-up"
+                  initial="rest"
+                  whileHover="hover"
+                  whileTap={{ scale: 0.96 }}
+                  variants={{
+                    rest: { y: 0, scale: 1 },
+                    hover: { y: -3, scale: 1.04 },
+                  }}
+                  transition={{ type: "spring", stiffness: 400, damping: 20 }}>
+                  Get Started{" "}
+                  <motion.span
+                    style={{ display: "inline-block" }}
+                    variants={{
+                      rest: { x: 0, y: 0 },
+                      hover: { x: 3, y: -3 },
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 15,
+                    }}>
+                    ↗
+                  </motion.span>
+                </MotionLink>
+
+                <MotionLink
+                  className="primary-link !bg-transparent !text-[#FFF9EF] border border-[#FFF9EF]/40 hover:!bg-[#FFF9EF]/10"
+                  href="/home"
+                  initial="rest"
+                  whileHover="hover"
+                  whileTap={{ scale: 0.96 }}
+                  variants={{
+                    rest: { y: 0, scale: 1 },
+                    hover: { y: -3, scale: 1.04 },
+                  }}
+                  transition={{ type: "spring", stiffness: 400, damping: 20 }}>
+                  Enter Portal{" "}
+                  <motion.span
+                    style={{ display: "inline-block" }}
+                    variants={{
+                      rest: { x: 0 },
+                      hover: { x: 5 },
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 15,
+                    }}>
+                    →
+                  </motion.span>
+                </MotionLink>
+              </div>
+            </MotionConfig>
           </div>
           <div className="hero-visual">
-            <div className="hero-image">
+            <motion.div
+              className="hero-image"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={
+                reduceMotion
+                  ? { opacity: 1, scale: 1 }
+                  : {
+                      opacity: 1,
+                      scale: 1,
+
+                      rotate: [-2, 2, -2],
+                    }
+              }
+              transition={{
+                opacity: { duration: 0.6 },
+                scale: { duration: 0.6 },
+                y: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+                rotate: { duration: 5, repeat: Infinity, ease: "easeInOut" },
+              }}
+              whileHover={reduceMotion ? undefined : { scale: 1.04 }}>
               <Image
                 src="/visuals/stem-workshop.jpg"
                 alt="Students collaborating in a STEM workshop"
@@ -121,7 +191,7 @@ export default function Home() {
                 priority
                 sizes="(max-width: 700px) 90vw, 48vw"
               />
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -212,7 +282,31 @@ export default function Home() {
                 <span>01</span>
                 <h3>Offline competitions</h3>
                 <p>Show up, work together, and make an impact in the room.</p>
-                <Link href="/home">View challenges ↗</Link>
+                <MotionLink
+                  href="/home"
+                  initial="rest"
+                  whileHover="hover"
+                  whileTap={{ scale: 0.97 }}
+                  variants={{
+                    rest: { x: 0 },
+                    hover: { x: 4 },
+                  }}
+                  transition={{ type: "spring", stiffness: 400, damping: 20 }}>
+                  View challenges{" "}
+                  <motion.span
+                    style={{ display: "inline-block" }}
+                    variants={{
+                      rest: { x: 0, y: 0 },
+                      hover: { x: 3, y: -3 },
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 15,
+                    }}>
+                    ↗
+                  </motion.span>
+                </MotionLink>
               </div>
             </article>
             <article>
@@ -228,7 +322,31 @@ export default function Home() {
                 <span>02</span>
                 <h3>Online competitions</h3>
                 <p>Bring your boldest ideas to a wider digital stage.</p>
-                <Link href="/home">View challenges ↗</Link>
+                <MotionLink
+                  href="/home"
+                  initial="rest"
+                  whileHover="hover"
+                  whileTap={{ scale: 0.97 }}
+                  variants={{
+                    rest: { x: 0 },
+                    hover: { x: 4 },
+                  }}
+                  transition={{ type: "spring", stiffness: 400, damping: 20 }}>
+                  View challenges{" "}
+                  <motion.span
+                    style={{ display: "inline-block" }}
+                    variants={{
+                      rest: { x: 0, y: 0 },
+                      hover: { x: 3, y: -3 },
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 15,
+                    }}>
+                    ↗
+                  </motion.span>
+                </MotionLink>
               </div>
             </article>
           </div>
@@ -251,9 +369,28 @@ export default function Home() {
               Join a growing community of young people who are learning out
               loud, sharing generously, and making room for each other.
             </p>
-            <Link className="primary-link dark-link" href="/sign-up">
-              Join the community <span>↗</span>
-            </Link>
+            <MotionLink
+              className="primary-link dark-link"
+              href="/sign-up"
+              initial="rest"
+              whileHover="hover"
+              whileTap={{ scale: 0.96 }}
+              variants={{
+                rest: { y: 0, scale: 1 },
+                hover: { y: -3, scale: 1.04 },
+              }}
+              transition={{ type: "spring", stiffness: 400, damping: 20 }}>
+              Join the community{" "}
+              <motion.span
+                style={{ display: "inline-block" }}
+                variants={{
+                  rest: { x: 0, y: 0 },
+                  hover: { x: 3, y: -3 },
+                }}
+                transition={{ type: "spring", stiffness: 400, damping: 15 }}>
+                ↗
+              </motion.span>
+            </MotionLink>
           </div>
         </section>
         <section id="classes" className="classes-section">
